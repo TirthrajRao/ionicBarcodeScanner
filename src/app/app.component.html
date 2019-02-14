@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ionic 4 Barcode Scanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  
+<h6>Click Button To Scan</h6>
+ 
+ 
+<button ion-button round (click)="scanCode()">Scan Code</button>
+ 
+<div *ngIf="scannedData">
+  <p>Scanned Code Text : <b>{{scannedData['text']}}</b></p>
+  <p>Scanned Code Format : <b>{{scannedData['format']}}</b></p>
+</div>
+
+<div style="padding-top: 20px">
+<h6>Enter text to generate Code!</h6> 
+<ion-input [(ngModel)]="code" type="text" placeholder="Enter text here"></ion-input>
+
+<button ion-button block (click)="process();">Generate</button>
+<p *ngIf="msg" style="color: red;">{{msg}}</p>
+
+<img *ngIf="displayQrCode()" [src]="generated" style="padding-top: 20px" />
+</div>
+</ion-content>
